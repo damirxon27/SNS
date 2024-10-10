@@ -53,3 +53,10 @@ resource "aws_cloudwatch_metric_alarm" "high_db_connections" {
 output "sns_topic_arn" {
   value = aws_sns_topic.critical_alerts.arn
 }
+resource "aws_secretsmanager_secret" "db_credentials" {
+  name        = "db_credentials"
+  description = "Database credentials for GoGreen"
+  tags = {
+    Name = "GoGreenDBCredentials"
+  }
+}
